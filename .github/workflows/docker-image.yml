@@ -2,17 +2,23 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker version
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: docker version
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - run: npm install
+      
+      - name: deploying
+        run: 
