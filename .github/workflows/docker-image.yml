@@ -19,6 +19,6 @@ jobs:
         with:
           node-version: "20.x"
       - run: npm install
-      
+
       - name: deploying
-        run: 
+        run: docker-compose up --build
