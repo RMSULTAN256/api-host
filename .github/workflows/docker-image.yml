@@ -21,5 +21,5 @@ jobs:
         run: |
           echo "${{ secrets.GHCR_TOKEN}}" | docker login ghcr.io -u ${{ github.actor}} --password-stdin
           IMAGE-ID=ghcr.io/rmsultan256/data
-          docker build -t IMAGE-ID:latest .
-          docker push IMAGE-ID:latest
+          docker build -t api-host .
+          docker push api-host
