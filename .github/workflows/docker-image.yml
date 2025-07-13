@@ -12,13 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Build the Docker image
-        run: docker version
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20.x"
       - run: npm install
 
-      - name: deploying
-        run: docker-compose up --build
+      - name: Build the Docker image
+        run: |
+          echo "${{ secrets.GHCR_TOKEN}}" | docker login ghcr.io -u ${{ github.actor}} --password-stdin
+          docker version
+          docker-compose build
