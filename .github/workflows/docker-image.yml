@@ -20,5 +20,6 @@ jobs:
       - name: Build the Docker image
         run: |
           echo "${{ secrets.GHCR_TOKEN}}" | docker login ghcr.io -u ${{ github.actor}} --password-stdin
-          docker version
-          docker compose up --build -d
+          IMAGE-ID=ghcr.io/rmsultan256/data
+          docker build -t IMAGE-ID:latest .
+          docker push IMAGE-ID:latest
